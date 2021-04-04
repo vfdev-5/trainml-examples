@@ -1,13 +1,13 @@
 # Image Segmentation trainings on Pascal VOC12
 
-- Create training job
+## Usage
 
+From the host where trainml cli is installed, run
 ```bash
-bash start_sn.sh n_gpus
+export CLEARML_API_ACCESS_KEY=...
+export CLEARML_API_SECRET_KEY=...
+python submit.py
 ```
-
-Add `CLEARML_API_ACCESS_KEY` and `CLEARML_API_SECRET_KEY` as env vars
-
 
 ---
 
