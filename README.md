@@ -3,7 +3,7 @@
 ## Install [CLI](https://github.com/trainML/trainml-cli)
 
 ```bash
-pip install trainml
+pip install git+https://github.com/trainML/trainml-cli.git
 ```
 
 ## Content

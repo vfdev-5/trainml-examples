@@ -296,7 +296,10 @@ def setup_experiment_tracking(config, with_clearml, task_type="training"):
 
             schema = TrainvalConfigSchema if task_type == "training" else InferenceConfigSchema
 
-            task = Task.init("Pascal-VOC12 Training", config.config_filepath.stem, task_type=task_type,)
+            output_uri = os.getenv("CLEARML_FILES_HOST", None)
+            task = Task.init(
+                "Pascal-VOC12 Training", config.config_filepath.stem, task_type=task_type, output_uri=output_uri
+            )
             task.connect_configuration(config.config_filepath.as_posix())
 
             task.upload_artifact(config.script_filepath.name, config.script_filepath.as_posix())

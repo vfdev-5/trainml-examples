@@ -23,12 +23,12 @@ with_amp = True
 
 
 num_classes = 21
-batch_size = 18  # total batch size
+batch_size = 36 # total batch size
 val_batch_size = batch_size * 2
 num_workers = 12  # total num workers per node
 val_interval = 3
 # grads accumulation:
-accumulation_steps = 4
+accumulation_steps = 2
 
 val_img_size = 513
 train_img_size = 480
