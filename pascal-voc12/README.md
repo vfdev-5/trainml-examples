@@ -6,7 +6,7 @@ From the host where trainml cli is installed, run
 ```bash
 export CLEARML_API_ACCESS_KEY=...
 export CLEARML_API_SECRET_KEY=...
-python submit.py
+python submit_job.py
 ```
 
 ---
