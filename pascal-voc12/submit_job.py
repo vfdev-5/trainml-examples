@@ -6,7 +6,7 @@ assert "CLEARML_API_ACCESS_KEY" in os.environ
 assert "CLEARML_API_SECRET_KEY" in os.environ
 
 
-n_gpus = 1
+n_gpus = 2
 job_cmd = f"""pip install --upgrade pytorch-ignite \
 && pip install fire py-config-runner git+https://github.com/vfdev-5/ImageDatasetViz.git albumentations opencv-python-headless clearml \
 && export CLEARML_API_HOST="https://api.community.clear.ml" \
@@ -17,7 +17,7 @@ job_cmd = f"""pip install --upgrade pytorch-ignite \
 && export DATASET_PATH=/data/ \
 && cd pascal-voc12 \
 && nvidia-smi \
-&& export config_file=configs/baseline_dplv3_resnet101_{n_gpus}gpu{"s" if n_gpus > 1 else ""}.py \
+&& export config_file=configs/dplv3_resnet101_513.py \
 && python -u -m torch.distributed.launch --nproc_per_node={n_gpus} --use_env main.py training $config_file
 """
 
