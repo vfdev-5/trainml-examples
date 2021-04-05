@@ -13,7 +13,7 @@ def initialize(config):
     optimizer = config.optimizer
 
     # Adapt model to dist config
-    model = idist.auto_model(model)
+    model = idist.auto_model(model, sync_bn=config.get("sync_bn", idist.get_world_size() > 1))
 
     if idist.backend() == "horovod":
         accumulation_steps = config.get("accumulation_steps", 1)

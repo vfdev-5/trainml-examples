@@ -21,7 +21,6 @@ debug = False
 # Use AMP with torch native
 with_amp = True
 
-
 num_classes = 21
 batch_size = 36 # total batch size
 val_batch_size = batch_size * 2
