@@ -4,6 +4,7 @@ from functools import partial
 
 import albumentations as A
 import cv2
+import ignite.distributed as idist
 import torch.nn as nn
 import torch.optim as optim
 import torch.optim.lr_scheduler as lrs
@@ -23,12 +24,13 @@ with_amp = True
 
 
 num_classes = 21
-batch_size = 18  # total batch size
+batch_size = 9 * idist.get_world_size()  # total batch size
 val_batch_size = batch_size * 2
 num_workers = 12  # total num workers per node
 val_interval = 3
 # grads accumulation:
-accumulation_steps = 4
+accumulation_steps = 72 // batch_size
+
 
 val_img_size = 513
 train_img_size = 480
